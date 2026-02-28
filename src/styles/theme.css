@@ -1,0 +1,25 @@
+:root {
+    /* Colors */
+    --color-primary-dark: #010E11;
+    --color-gray-100: #F9F9FA;
+    --color-gray-200: #F5F6F6;
+    --color-gray-300: #DEE0E0;
+    --color-gray-400: #B9C1C2;
+  
+    --color-teal-700: #167287;
+    --color-teal-500: #05BCB9;
+  
+    --color-danger: #CE3434;
+  
+    --gradient-primary: linear-gradient(135deg, #05BCB9, #167287);
+  
+    /* Typography */
+    --font-family: 'Open Sans', sans-serif;
+  
+    --title-size: 48px;
+    --subtitle-size: 28px;
+    --subtitle2-size: 24px;
+    --body-size: 16px;
+    --caption1-size: 14px;
+    --caption2-size: 12px;
+  }
