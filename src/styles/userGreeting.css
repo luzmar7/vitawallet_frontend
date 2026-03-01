@@ -1,0 +1,14 @@
+.user-greeting {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-icon {
+  width: 46px;
+  height: 46px;
+}
+
+.user-name {
+  color: var(--color-teal-500);
+}

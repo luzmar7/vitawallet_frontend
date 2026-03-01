@@ -3,7 +3,8 @@ import { useWallet } from "../hooks/useWallet";
 import BalanceCard from "../components/BalanceCard";
 import { useTransactions } from "../hooks/useTransactions";
 import TransactionList from "../components/TransactionList";
-
+import "../styles/dashboard.css"
+import UserGreeting from "../components/UserGreeting";
 export default function Dashboard() {
   const { balances, loading, error } = useWallet();
   const {
@@ -14,32 +15,39 @@ export default function Dashboard() {
 
   return (
     <Layout>
-      <h2>Hola 👋</h2>
+      <div className="dashboard-container">
+        <UserGreeting name="David" />
 
-      <h3>Mis saldos</h3>
+        <section className="dashboard-section">
+          <h3 className="text-subtitle-24">Mis saldos</h3>
 
-      {loading && <p>Cargando...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+          {loading && <p className="text-body">Cargando...</p>}
+          {error && <p className="error-message">{error}</p>}
 
-      {!loading && !error && (
-        <div style={{ display: "flex", gap: "20px" }}>
-          {balances.map((balance) => (
-            <BalanceCard
-              key={balance.currency}
-              currency={balance.currency}
-              amount={balance.amount}
-            />
-          ))}
-        </div>
-      )}
-      <h3 style={{ marginTop: "40px" }}>Historial</h3>
+          {!loading && !error && (
+            <div className="balance-wrapper">
+              {balances.map((balance) => (
+                <BalanceCard
+                  key={balance.currency}
+                  currency={balance.currency}
+                  amount={balance.amount}
+                />
+              ))}
+            </div>
+          )}
+        </section>
 
-      {txLoading && <p>Cargando historial...</p>}
-      {txError && <p style={{ color: "red" }}>{txError}</p>}
+        <section className="dashboard-section">
+          <h3 className="text-subtitle-24">Historial</h3>
 
-      {!txLoading && !txError && (
-        <TransactionList transactions={transactions} />
-      )}
+          {txLoading && <p className="text-body">Cargando historial...</p>}
+          {txError && <p className="error-message">{txError}</p>}
+
+          {!txLoading && !txError && (
+            <TransactionList transactions={transactions} />
+          )}
+        </section>
+      </div>
     </Layout>
   );
 }

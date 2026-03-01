@@ -6,6 +6,7 @@ import "../styles/login.css";
 import LoginIllustration from "../assets/images/login-illustration.png";
 import EyeIcon from "../assets/icons/ui/eye.svg";
 import EyeOffIcon from "../assets/icons/ui/eye_off.svg";
+import TextField from "../components/TextField";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -52,24 +53,36 @@ return (
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          <TextField
+              label="Correo electrónico"
+              type="email"
+              placeholder="juan@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              success={email.includes("@")}
+            />
         </div>
 
         <div className="input-group password-group">
           <label>Contraseña</label>
 
           <div className="password-wrapper">
-            <input
+
+            
+            <TextField
+              label="Contraseña"
               type={showPassword ? "text" : "password"}
               placeholder="Escribe tu contraseña"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            />
-
-            <img
-              src={showPassword ? EyeOffIcon : EyeIcon}
-              alt="toggle password"
-              className="password-icon"
-              onClick={() => setShowPassword(!showPassword)}
+              iconRight={
+                <img
+                  src={showPassword ? EyeOffIcon : EyeIcon}
+                  alt="toggle"
+                  width={20}
+                />
+              }
+              onIconRightClick={() => setShowPassword(!showPassword)}
             />
           </div>
         </div>

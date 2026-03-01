@@ -1,21 +1,31 @@
+import { currencyIcons } from "../constants/currencyIcons";
+import "../styles/balanceCard.css";
+
 interface BalanceCardProps {
-    currency: string;
-    amount: string;
-  }
-  
-  export default function BalanceCard({ currency, amount }: BalanceCardProps) {
-    return (
-      <div
-        style={{
-          background: "white",
-          padding: "20px",
-          borderRadius: "12px",
-          boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
-          minWidth: "160px",
-        }}
-      >
-        <p style={{ margin: 0, color: "#666" }}>{currency}</p>
-        <h3 style={{ margin: "8px 0 0 0" }}>{amount}</h3>
+  currency: string;
+  amount: string;
+}
+
+export default function BalanceCard({ currency, amount }: BalanceCardProps) {
+  const icon = currencyIcons[currency];
+
+  return (
+    <div className="balance-card">
+      <div className="balance-header">
+        <p className="text-body balance-title">{currency}</p>
+
+        {icon && (
+          <img
+            src={icon}
+            alt={`${currency} icon`}
+            className="currency-icon"
+          />
+        )}
       </div>
-    );
-  }
+
+      <h3 className="text-subtitle-24-semibold balance-amount">
+        {amount}
+      </h3>
+    </div>
+  );
+}

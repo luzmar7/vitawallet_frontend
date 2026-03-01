@@ -1,35 +1,28 @@
-
 import type { Transaction } from "../hooks/useTransactions";
+
+import "../styles/transactionList.css"
 interface Props {
   transactions: Transaction[];
 }
 
 export default function TransactionList({ transactions }: Props) {
   return (
-    <div style={{ marginTop: "20px" }}>
+    <div className="transaction-list">
       {transactions.map((tx) => (
-        <div
-          key={tx.id}
-          style={{
-            background: "white",
-            padding: "15px",
-            borderRadius: "10px",
-            marginBottom: "10px",
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
+        <div key={tx.id} className="transaction-item">
           <div>
-            <p style={{ margin: 0 }}>
+            <p className="text-body">
               {tx.from_currency} → {tx.to_currency}
             </p>
-            <small>{new Date(tx.created_at).toLocaleString()}</small>
+            <span className="text-caption-12 transaction-date">
+              {new Date(tx.created_at).toLocaleString()}
+            </span>
           </div>
 
           <div
-            style={{
-              color: tx.status === "completed" ? "green" : "red",
-            }}
+            className={`transaction-status ${
+              tx.status === "completed" ? "completed" : "failed"
+            }`}
           >
             {tx.status}
           </div>

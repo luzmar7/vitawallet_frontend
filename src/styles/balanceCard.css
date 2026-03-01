@@ -1,0 +1,45 @@
+.balance-card {
+  width: 285px;
+  height: 129px;
+  background: var(--color-gray-200);
+  border: 2px solid var(--color-gray-300);
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  transition: border 0.2s ease;
+  justify-content: space-between;
+}
+
+.balance-card:hover {
+  border-color: var(--color-teal-500);
+}
+
+.balance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.currency-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+.balance-currency {
+  color: var(--color-gray-400);
+  margin-bottom: 8px;
+}
+
+.balance-title {
+  color: var(--color-primary-dark);
+  margin-bottom: 8px;
+}
+
+.balance-amount {
+  color: var(--color-primary-dark);
+}
+
+
+

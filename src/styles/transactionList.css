@@ -1,0 +1,30 @@
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.transaction-item {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-gray-300);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction-date {
+  color: var(--color-gray-400);
+}
+
+.transaction-status {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.transaction-status.completed {
+  color: var(--color-teal-700);
+}
+
+.transaction-status.failed {
+  color: var(--color-danger);
+}

@@ -1,0 +1,22 @@
+.dashboard-container {
+  padding: 76px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.dashboard-username {
+  color: var(--color-teal-500);
+}
+
+.dashboard-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.balance-wrapper {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
