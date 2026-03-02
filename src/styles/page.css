@@ -1,0 +1,10 @@
+.page-container {
+  max-width: 520px;
+  margin: 120px auto;
+  text-align: center;
+}
+
+.page-description {
+  margin-top: 16px;
+  color: #666;
+}

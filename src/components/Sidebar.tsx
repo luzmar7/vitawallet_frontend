@@ -1,22 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import "../styles/sidebar.css";
 
 export default function Sidebar() {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
-
-  const linkStyle = ({ isActive }: { isActive: boolean }) => ({
-    display: "block",
-    padding: "10px 0",
-    color: "white",
-    textDecoration: "none",
-    fontWeight: isActive ? "bold" : "normal",
-    background: isActive ? "rgba(255,255,255,0.2)" : "transparent",
-    borderRadius: "8px",
-    paddingLeft: "10px",
-  });
 
   const handleLogout = () => {
     auth?.logout();
@@ -24,56 +13,57 @@ export default function Sidebar() {
   };
 
   return (
-    <div
-      style={{
-        width: "250px",
-        background: "#1f7a8c",
-        color: "white",
-        padding: "30px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
-    >
-      <div>
-        <h3>VitaWallet</h3>
+    <aside className="sidebar">
+      <div className="sidebar-content">
+        <nav className="sidebar-nav">
 
-        <nav style={{ marginTop: "30px" }}>
-          <NavLink to="/dashboard" style={linkStyle}>
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive
+                ? "sidebar-link text-subtitle-24-semibold active"
+                : "sidebar-link text-subtitle-24"
+            }
+          >
             Inicio
           </NavLink>
-          <NavLink to="/" style={linkStyle}>
+
+          <NavLink to="/transfer" className="sidebar-link text-subtitle-24">
             Transferir
           </NavLink>
-          <NavLink to="/" style={linkStyle}>
+
+          <NavLink to="/recharge" className="sidebar-link text-subtitle-24">
             Recargar
           </NavLink>
-          <NavLink to="/exchange" style={linkStyle}>
+
+          <NavLink
+            to="/exchange"
+            className={({ isActive }) =>
+              isActive
+                ? "sidebar-link text-subtitle-24-semibold active"
+                : "sidebar-link text-subtitle-24"
+            }
+          >
             Intercambiar
           </NavLink>
-          <NavLink to="/" style={linkStyle}>
+
+          <NavLink to="/profile" className="sidebar-link text-subtitle-24">
             Perfil
           </NavLink>
-          <NavLink to="/" style={linkStyle}>
+
+          <NavLink to="/help" className="sidebar-link text-subtitle-24">
             Ayuda
           </NavLink>
 
         </nav>
-      </div>
 
-      <button
-        onClick={handleLogout}
-        style={{
-          background: "transparent",
-          color: "white",
-          border: "1px solid white",
-          padding: "8px",
-          borderRadius: "8px",
-          cursor: "pointer",
-        }}
-      >
-        Cerrar sesión
-      </button>
-    </div>
+        <button
+          className="logout-btn text-subtitle-24"
+          onClick={handleLogout}
+        >
+          Cerrar sesión
+        </button>
+      </div>
+    </aside>
   );
 }

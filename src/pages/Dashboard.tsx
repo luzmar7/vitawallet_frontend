@@ -5,6 +5,8 @@ import { useTransactions } from "../hooks/useTransactions";
 import TransactionList from "../components/TransactionList";
 import "../styles/dashboard.css"
 import UserGreeting from "../components/UserGreeting";
+import { useMe } from "../hooks/useMe";
+
 export default function Dashboard() {
   const { balances, loading, error } = useWallet();
   const {
@@ -12,11 +14,16 @@ export default function Dashboard() {
     loading: txLoading,
     error: txError,
   } = useTransactions();
+  const { user, loading: userLoading } = useMe();
 
   return (
     <Layout>
       <div className="dashboard-container">
-        <UserGreeting name="David" />
+      <UserGreeting
+        name={
+          user?.email?.split("@")[0] || ""
+        }
+      />
 
         <section className="dashboard-section">
           <h3 className="text-subtitle-24">Mis saldos</h3>

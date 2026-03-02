@@ -7,6 +7,8 @@ import LoginIllustration from "../assets/images/login-illustration.png";
 import EyeIcon from "../assets/icons/ui/eye.svg";
 import EyeOffIcon from "../assets/icons/ui/eye_off.svg";
 import TextField from "../components/TextField";
+import Button from "../components/Button";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -37,23 +39,17 @@ export default function Login() {
       setLoading(false);
     }
   };
-
-return (
-  <div className="login-container">
-    {/* LEFT SIDE */}
-    <div className="login-left">
-      <h1 className="login-title">Iniciar sesión</h1>
-
-      <form className="login-form" onSubmit={handleSubmit}>
-        <div className="input-group">
-          <label>Correo electrónico</label>
-          <input
-            type="email"
-            placeholder="juan@gmail.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <TextField
+  return (
+    <div className="login-container">
+      {/* LEFT SIDE */}
+      <div className="login-left">
+        <div className="login-content">
+          <h1 className="text-title-48 login-title">
+            Iniciar sesión
+          </h1>
+  
+          <form className="login-form" onSubmit={handleSubmit}>
+            <TextField
               label="Correo electrónico"
               type="email"
               placeholder="juan@gmail.com"
@@ -61,54 +57,56 @@ return (
               onChange={(e) => setEmail(e.target.value)}
               success={email.includes("@")}
             />
+            <div className="password-block">
+              <TextField
+                label="Contraseña"
+                type={showPassword ? "text" : "password"}
+                placeholder="Escribe tu contraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                iconRight={
+                  <img
+                    src={showPassword ? EyeOffIcon : EyeIcon}
+                    alt="toggle"
+                    width={20}
+                  />
+                }
+                onIconRightClick={() =>
+                  setShowPassword(!showPassword)
+                }
+              />
+              <Link to="/forgot-password" className="forgot-password text-caption-12">
+                ¿Olvidaste tu contraseña?
+              </Link>
+            </div>
+  
+            {error && (
+              <p className="error-message text-caption-14">
+                {error}
+              </p>
+            )}
+            <div className="login-actions">
+              <Button
+                type="submit"
+                variant={!email || !password ? "disabled" : "primary"}
+                fullWidth
+              >
+                Iniciar sesión
+              </Button>
+            </div>
+          </form>
         </div>
-
-        <div className="input-group password-group">
-          <label>Contraseña</label>
-
-          <div className="password-wrapper">
-
-            
-            <TextField
-              label="Contraseña"
-              type={showPassword ? "text" : "password"}
-              placeholder="Escribe tu contraseña"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              iconRight={
-                <img
-                  src={showPassword ? EyeOffIcon : EyeIcon}
-                  alt="toggle"
-                  width={20}
-                />
-              }
-              onIconRightClick={() => setShowPassword(!showPassword)}
-            />
-          </div>
-        </div>
-
-        {error && <p className="error-message">{error}</p>}
-
-        <button
-          type="submit"
-          disabled={loading || !email || !password}
-          className={`login-button ${
-            email && password ? "active" : ""
-          }`}
-        >
-          {loading ? "Cargando..." : "Iniciar sesión"}
-        </button>
-      </form>
+      </div>
+  
+      {/* RIGHT SIDE */}
+      <div className="login-right">
+        <img
+          src={LoginIllustration}
+          alt="Login illustration"
+          className="login-image"
+        />
+      </div>
     </div>
+  );
 
-    {/* RIGHT SIDE */}
-    <div className="login-right">
-      <img
-        src={LoginIllustration}
-        alt="Login illustration"
-        style={{ width: "70%" }}
-      />
-    </div>
-  </div>
-);
 }

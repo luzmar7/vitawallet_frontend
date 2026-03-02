@@ -5,15 +5,20 @@ import TextField from "../components/TextField.tsx"
 import { useExchangeQuote } from "../hooks/useExchangeQuote";
 import { createExchange } from "../api/exchange";
 import { useWallet } from "../hooks/useWallet";
+import { useNavigate } from "react-router-dom";
 import "../styles/exchange.css";
 import CurrencySelect from "../components/CurrencySelect.tsx";
+import Button from "../components/Button.tsx";
+
 const currencies = ["USD", "CLP", "BTC", "USDT", "USDC"];
+
 
 export default function Exchange() {
   const [from, setFrom] = useState("USD");
   const [to, setTo] = useState("BTC");
   const [amount, setAmount] = useState("");
   const { balances } = useWallet();
+  const navigate = useNavigate();
   const availableBalance =
   balances.find((b) => b.currency === from)?.amount || "0";
 
@@ -85,13 +90,27 @@ export default function Exchange() {
           </div>
         </div>
 
-        <button
-          className="exchange-button"
-          onClick={handleConfirm}
-          disabled={!amount || loading || from === to}
-        >
-          {loading ? "Calculando..." : "Confirmar"}
-        </button>
+        <div className="exchange-actions">
+            <Button
+              variant="secondary"
+              fullWidth
+              onClick={() => window.history.back()}
+            >
+              Atrás
+            </Button>
+
+            <Button
+              variant={!amount || loading || from === to ? "disabled" : "primary"}
+              fullWidth
+              onClick={() =>
+                navigate("/exchange-summary", {
+                  state: { from, to, amount, quote }
+                })
+              }
+            >
+              {loading ? "Calculando..." : "Continuar"}
+            </Button>
+        </div>
       </div>
     </Layout>
   );
