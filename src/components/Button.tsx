@@ -21,9 +21,7 @@ export default function Button({
   return (
     <button
       type={type}
-      className={`btn btn-${variant} ${
-        fullWidth ? "btn-full" : ""
-      }`}
+      className={`btn btn-${variant} ${fullWidth ? "btn-full" : ""}`}
       disabled={variant === "disabled"}
       onClick={onClick}
     >

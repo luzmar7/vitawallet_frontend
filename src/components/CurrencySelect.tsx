@@ -8,13 +8,12 @@ import "../styles/CurrencySelect.css";
 // import usd from "../assets/currencies/usd.png";
 
 import btc from "../assets/icons/currencies/bitcoin.svg";
-import clp from "../assets/icons/currencies/chile.svg"
-import usdc from "../assets/icons/currencies/usdc.svg"
-import usdt from "../assets/icons/currencies/tether.svg"
-import usd from "../assets/icons/currencies/coin.svg"
+import clp from "../assets/icons/currencies/chile.svg";
+import usdc from "../assets/icons/currencies/usdc.svg";
+import usdt from "../assets/icons/currencies/tether.svg";
+import usd from "../assets/icons/currencies/coin.svg";
 
-
-import arrow from "../assets/icons/ui/arrow.svg"
+import arrow from "../assets/icons/ui/arrow.svg";
 
 interface CurrencySelectProps {
   value: string;
@@ -39,15 +38,8 @@ export default function CurrencySelect({
 
   return (
     <div className="currency-select">
-      <div
-        className="currency-select-trigger"
-        onClick={() => setOpen(!open)}
-      >
-        <img
-          src={currencyIcons[value]}
-          alt={value}
-          className="currency-icon"
-        />
+      <div className="currency-select-trigger" onClick={() => setOpen(!open)}>
+        <img src={currencyIcons[value]} alt={value} className="currency-icon" />
 
         <img
           src={arrow}

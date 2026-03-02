@@ -2,12 +2,15 @@
 import { useEffect, useState } from "react";
 import { getQuote } from "../api/prices";
 
-export function useExchangeQuote(
-  from: string,
-  to: string,
-  amount: string
-) {
-  const [quote, setQuote] = useState<any>(null);
+interface Quote {
+  from_currency: string;
+  to_currency: string;
+  rate: string;
+  from_amount: string;
+  to_amount: string;
+}
+export function useExchangeQuote(from: string, to: string, amount: string) {
+  const [quote, setQuote] = useState<Quote | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -20,7 +23,7 @@ export function useExchangeQuote(
         const data = await getQuote(from, to, amount);
         setQuote(data);
         setError("");
-      } catch (err) {
+      } catch {
         setError("Error fetching quote");
       } finally {
         setLoading(false);

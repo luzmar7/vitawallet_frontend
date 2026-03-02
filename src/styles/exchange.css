@@ -1,23 +1,18 @@
-
-
 .exchange-container {
   max-width: 800px;
   padding: 76px 80px;
 }
-
 
 .exchange-title {
   text-align: left;
   margin-bottom: 12px;
 }
 
-
 .exchange-balance {
   text-align: left;
   color: var(--color-teal-500);
   margin-bottom: 48px;
 }
-
 
 .exchange-section {
   margin-bottom: 40px;
@@ -26,18 +21,15 @@
   gap: 8px;
 }
 
-
 .exchange-row {
   display: flex;
   gap: 16px;
   align-items: center;
 }
 
-
 .exchange-row .form-group {
   flex: 1;
 }
-
 
 .exchange-select {
   width: 110px; /* ancho fijo como en diseño */
@@ -55,7 +47,6 @@
 .exchange-select:focus {
   border-color: var(--color-teal-500);
 }
-
 
 .exchange-button {
   margin-top: 48px;
@@ -82,7 +73,6 @@
   display: flex;
   gap: 16px;
   margin-top: 200px;
-  
 }
 
 .summary-card {

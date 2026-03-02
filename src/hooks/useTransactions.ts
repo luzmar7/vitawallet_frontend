@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { getTransactions } from "../api/transactions";
 
 export interface Transaction {
@@ -16,22 +16,22 @@ export function useTransactions(status?: string) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const fetchTransactions = async () => {
+  const fetchTransactions = useCallback(async () => {
     try {
       setLoading(true);
       const data = await getTransactions(status);
       setTransactions(data);
       setError("");
-    } catch (err) {
+    } catch {
       setError("Error loading transactions");
     } finally {
       setLoading(false);
     }
-  };
+  }, [status]); // 👈 depende de status
 
   useEffect(() => {
     fetchTransactions();
-  }, [status]);
+  }, [fetchTransactions]); // 👈 ahora sí correcto
 
   return {
     transactions,

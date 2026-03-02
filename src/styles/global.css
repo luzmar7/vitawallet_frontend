@@ -1,16 +1,16 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-family);
-  }
-  
-  body {
-    background-color: var(--color-gray-100);
-    color: var(--color-primary-dark);
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+}
 
-  /* ===== TIPOGRAFÍA SISTEMA ===== */
+body {
+  background-color: var(--color-gray-100);
+  color: var(--color-primary-dark);
+}
+
+/* ===== TIPOGRAFÍA SISTEMA ===== */
 
 .text-title-48 {
   font-size: 48px;

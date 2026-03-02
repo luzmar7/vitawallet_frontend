@@ -15,7 +15,7 @@ export default function ExchangeSummary() {
   const handleExchange = async () => {
     try {
       await createExchange(from, to, amount);
-      setSuccessModal(true); // 👈 abre modal
+      setSuccessModal(true);
     } catch (err: any) {
       alert(err.response?.data?.error || "Exchange failed");
     }
@@ -23,14 +23,18 @@ export default function ExchangeSummary() {
   return (
     <Layout>
       <div className="exchange-container">
-        <h2 className="exchange-title">
-          Resumen de transacción
-        </h2>
+        <h2 className="exchange-title">Resumen de transacción</h2>
 
         <div className="summary-card">
-          <p>Monto a intercambiar: {amount} {from}</p>
-          <p>Tasa de cambio: 1 {to} = {quote?.rate}</p>
-          <p>Total a recibir: {quote?.to_amount} {to}</p>
+          <p>
+            Monto a intercambiar: {amount} {from}
+          </p>
+          <p>
+            Tasa de cambio: 1 {to} = {quote?.rate}
+          </p>
+          <p>
+            Total a recibir: {quote?.to_amount} {to}
+          </p>
         </div>
 
         <div className="exchange-actions">
@@ -42,17 +46,15 @@ export default function ExchangeSummary() {
             Intercambiar
           </Button>
         </div>
-
       </div>
       <SuccessModal
         open={successModal}
         currency={to}
         onClose={() => {
-            setSuccessModal(false);
-            navigate("/dashboard");
+          setSuccessModal(false);
+          navigate("/dashboard");
         }}
-        />
-      
+      />
     </Layout>
   );
 }

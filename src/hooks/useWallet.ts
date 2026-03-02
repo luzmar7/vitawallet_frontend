@@ -17,7 +17,7 @@ export function useWallet() {
       const data = await getWallet();
       setBalances(data);
       setError("");
-    } catch (err) {
+    } catch {
       setError("Error loading wallet");
     } finally {
       setLoading(false);

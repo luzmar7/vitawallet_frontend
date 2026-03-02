@@ -15,17 +15,11 @@ export default function BalanceCard({ currency, amount }: BalanceCardProps) {
         <p className="text-body balance-title">{currency}</p>
 
         {icon && (
-          <img
-            src={icon}
-            alt={`${currency} icon`}
-            className="currency-icon"
-          />
+          <img src={icon} alt={`${currency} icon`} className="currency-icon" />
         )}
       </div>
 
-      <h3 className="text-subtitle-24-semibold balance-amount">
-        {amount}
-      </h3>
+      <h3 className="text-subtitle-24-semibold balance-amount">{amount}</h3>
     </div>
   );
 }

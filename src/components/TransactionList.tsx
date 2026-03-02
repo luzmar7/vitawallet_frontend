@@ -1,6 +1,6 @@
 import type { Transaction } from "../hooks/useTransactions";
 
-import "../styles/transactionList.css"
+import "../styles/transactionList.css";
 interface Props {
   transactions: Transaction[];
 }

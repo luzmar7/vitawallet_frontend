@@ -16,19 +16,12 @@ export default function SuccessModal({
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div
-        className="success-modal"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="success-modal" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>
           ✕
         </button>
 
-        <img
-          src={SucessIllustration}
-          alt="Success"
-          className="modal-image"
-        />
+        <img src={SucessIllustration} alt="Success" className="modal-image" />
 
         <h3>¡Intercambio exitoso!</h3>
         <p>Ya cuentas con los {currency} en tu saldo.</p>

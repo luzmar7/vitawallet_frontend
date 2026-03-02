@@ -16,7 +16,6 @@ export default function Sidebar() {
     <aside className="sidebar">
       <div className="sidebar-content">
         <nav className="sidebar-nav">
-
           <NavLink
             to="/dashboard"
             className={({ isActive }) =>
@@ -54,13 +53,9 @@ export default function Sidebar() {
           <NavLink to="/help" className="sidebar-link text-subtitle-24">
             Ayuda
           </NavLink>
-
         </nav>
 
-        <button
-          className="logout-btn text-subtitle-24"
-          onClick={handleLogout}
-        >
+        <button className="logout-btn text-subtitle-24" onClick={handleLogout}>
           Cerrar sesión
         </button>
       </div>

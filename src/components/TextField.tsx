@@ -42,18 +42,10 @@ export default function TextField({
         success ? "success" : ""
       }`}
     >
-      {label && (
-        <label className="form-label text-caption-14">
-          {label}
-        </label>
-      )}
+      {label && <label className="form-label text-caption-14">{label}</label>}
 
       <div className="input-wrapper">
-        {iconLeft && (
-          <span className="input-icon-left">
-            {iconLeft}
-          </span>
-        )}
+        {iconLeft && <span className="input-icon-left">{iconLeft}</span>}
 
         <input
           name={name}
@@ -71,9 +63,7 @@ export default function TextField({
 
         {iconRight && (
           <span
-            className={`input-icon-right ${
-              success ? "success" : ""
-            }`}
+            className={`input-icon-right ${success ? "success" : ""}`}
             onClick={onIconRightClick}
             style={{ cursor: onIconRightClick ? "pointer" : "default" }}
           >
@@ -83,9 +73,7 @@ export default function TextField({
       </div>
 
       {helperText && (
-        <span className="form-helper text-caption-12">
-          {helperText}
-        </span>
+        <span className="form-helper text-caption-12">{helperText}</span>
       )}
     </div>
   );

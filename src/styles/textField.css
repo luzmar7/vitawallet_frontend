@@ -33,7 +33,6 @@
   font-size: var(--body-size);
 }
 
-
 .form-input::placeholder {
   font-family: var(--font-family);
   font-weight: 400;

@@ -14,7 +14,6 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const auth = useContext(AuthContext);
@@ -22,7 +21,6 @@ export default function Login() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setError("");
 
     try {
@@ -35,8 +33,6 @@ export default function Login() {
       navigate("/dashboard");
     } catch (err: any) {
       setError(err.response?.data?.error || "Login failed");
-    } finally {
-      setLoading(false);
     }
   };
   return (
@@ -44,10 +40,8 @@ export default function Login() {
       {/* LEFT SIDE */}
       <div className="login-left">
         <div className="login-content">
-          <h1 className="text-title-48 login-title">
-            Iniciar sesión
-          </h1>
-  
+          <h1 className="text-title-48 login-title">Iniciar sesión</h1>
+
           <form className="login-form" onSubmit={handleSubmit}>
             <TextField
               label="Correo electrónico"
@@ -71,20 +65,17 @@ export default function Login() {
                     width={20}
                   />
                 }
-                onIconRightClick={() =>
-                  setShowPassword(!showPassword)
-                }
+                onIconRightClick={() => setShowPassword(!showPassword)}
               />
-              <Link to="/forgot-password" className="forgot-password text-caption-12">
+              <Link
+                to="/forgot-password"
+                className="forgot-password text-caption-12"
+              >
                 ¿Olvidaste tu contraseña?
               </Link>
             </div>
-  
-            {error && (
-              <p className="error-message text-caption-14">
-                {error}
-              </p>
-            )}
+
+            {error && <p className="error-message text-caption-14">{error}</p>}
             <div className="login-actions">
               <Button
                 type="submit"
@@ -97,7 +88,7 @@ export default function Login() {
           </form>
         </div>
       </div>
-  
+
       {/* RIGHT SIDE */}
       <div className="login-right">
         <img
@@ -108,5 +99,4 @@ export default function Login() {
       </div>
     </div>
   );
-
 }
