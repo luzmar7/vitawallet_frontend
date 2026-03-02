@@ -1,4 +1,10 @@
-# VitaWallet (Frontend)
+# 🟣 VitaWallet – Frontend
+
+Frontend desarrollado como parte de la prueba técnica Fullstack VitaWallet.
+
+Aplicación construida con React + TypeScript que permite autenticación, visualización de balances, cotización en tiempo real y ejecución de intercambios.
+
+---
 
 ## 🚀 Stack
 
@@ -7,59 +13,111 @@
 - Vite
 - Context API
 - Custom Hooks
+- Axios
+- CSS con variables globales
 
-## 📦 Setup
+---
 
-### 1️⃣ Clone repository
+## ⚙️ Quick Start
 
-git clone https://github.com/TU_USUARIO/vitawallet_frontend.git
+Clonar repositorio:
+
+```bash
+git clone https://github.com/luzmar7/vitawallet_frontend.git
 cd vitawallet_frontend
+```
 
-### 2️⃣ Use Node version
+Usar versión de Node recomendada:
 
-Recommended:
-
+```
 20.19.0
+```
 
-nvm install 20.19.0
-nvm use 20.19.0
+Instalar dependencias:
 
-### 3️⃣ Install dependencies
-
+```bash
 npm install
+```
 
-### 4️⃣ Run project
+Ejecutar servidor de desarrollo:
 
+```bash
 npm run dev
+```
 
-Runs on:
+Disponible en:
+
 http://localhost:5173
 
-## 🧠 Architecture
+---
 
-- api/ → Axios services
-- hooks/ → Custom hooks (useWallet, useTransactions, useExchangeQuote)
-- components/ → Reusable UI components
-- pages/ → Screens
-- context/ → Auth management
+## 🔐 Autenticación
 
-## 🔐 Authentication
+- Login basado en JWT
+- Token almacenado en localStorage
+- Rutas protegidas
+- Redirección automática si no existe sesión
 
-JWT stored in localStorage.
-Protected routes implemented.
+---
 
-## 💰 Features
+## 💰 Wallet
 
-- Login
-- Wallet balances
-- Real-time exchange quote
-- Exchange execution
-- Transaction history
-- Error and loading states
+- Visualización de balances por moneda
+- Actualización automática al realizar un exchange
 
-## 🎨 Design
+---
 
-- Custom CSS variables
-- Design system based on Figma
-- Open Sans typography
-- Reusable components
+## 🔄 Exchange
+
+- Cotización en tiempo real
+- Validación de monto
+- Manejo de estados de carga
+- Manejo básico de errores
+
+---
+
+## 📊 Transactions
+
+- Listado de transacciones
+- Visualización de estado
+- Actualización luego de ejecutar exchange
+
+---
+
+## 🏗 Arquitectura
+
+Estructura principal:
+
+```
+src/
+├─ api/        # Servicios HTTP
+├─ components/ # Componentes reutilizables
+├─ context/    # Estado global
+├─ hooks/      # Lógica desacoplada
+├─ pages/      # Vistas principales
+```
+
+Principios aplicados:
+
+- Separación de responsabilidades
+- Lógica encapsulada en custom hooks
+- Componentes reutilizables
+- Arquitectura simple y escalable
+
+---
+
+## 🧠 Decisiones Técnicas
+
+- Context API en lugar de Redux por el alcance del proyecto.
+- Custom Hooks para separar lógica de UI.
+- Axios centralizado en capa API.
+- TypeScript para tipado seguro de datos.
+- Manejo básico de loading y error states.
+
+---
+
+## 🔜 Mejoras Futuras
+
+- Refresh token
+- Manejo global de errores
+- Internacionalización (i18n)
